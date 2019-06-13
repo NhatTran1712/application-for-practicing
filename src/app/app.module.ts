@@ -11,15 +11,18 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 // import { AdminComponent } from './admin/admin.component';
 import { httpInterceptorProviders } from './auth/auth-interceptor';
+import { AdminComponent } from './admin/admin.component';
+import { PmComponent } from './pm/pm.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
+    UserComponent,
     RegisterComponent,
     HomeComponent,
-    UserComponent,
-    // AdminComponent
+    AdminComponent,
+    PmComponent
   ],
   imports: [
     BrowserModule,

@@ -9,10 +9,10 @@ import { TouchSequence } from 'selenium-webdriver';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  info : any;
-
-  constructor(private token:TokenStorageService) { }
-
+  info: any;
+ 
+  constructor(private token: TokenStorageService) { }
+ 
   ngOnInit() {
     this.info = {
       token: this.token.getToken(),
@@ -20,10 +20,10 @@ export class HomeComponent implements OnInit {
       authorities: this.token.getAuthorities()
     };
   }
-
-  logout(){
+ 
+  logout() {
     this.token.signOut();
-    window.location.reload;
+    window.location.reload();
   }
-
 }
+

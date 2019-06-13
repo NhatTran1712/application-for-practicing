@@ -15,7 +15,7 @@ const httpOptions = {
 })
 export class AuthService {
   private loginUrl = 'http://localhost:8080/rest/login';
-  private signupUrl = 'http://localhost:8080/rest/users';
+  private signupUrl = 'http://localhost:8080/rest/register';
  
   constructor(private http: HttpClient) {}
  

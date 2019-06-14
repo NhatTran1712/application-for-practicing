@@ -10,6 +10,6 @@ export class SignUpInfo{
     ){
         this.username = username;
         this.password = password;
-        this.role = ['USER'];
+        this.role = ['ROLE_USER'];
     }
 }

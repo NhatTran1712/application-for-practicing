@@ -28,7 +28,7 @@ import { PmComponent } from './pm/pm.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

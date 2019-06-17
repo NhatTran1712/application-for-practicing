@@ -17,7 +17,10 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
   private loginInfo: AuthLoginInfo;
  
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService
+  ) { }
  
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
@@ -50,6 +53,8 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
+    console.log("token ",this.tokenStorage.getToken);
+    console.log("username ",this.tokenStorage.getUsername);
   }
  
   reloadPage() {

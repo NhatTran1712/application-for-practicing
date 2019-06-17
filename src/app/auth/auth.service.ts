@@ -19,8 +19,13 @@ export class AuthService {
  
   constructor(private http: HttpClient) {}
  
-  attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
-    return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
+  // attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
+  //   return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
+  // }
+
+  attemptAuth(credentials: AuthLoginInfo): Observable<any> {
+    console.log("credentials ", credentials);
+    return this.http.post(this.loginUrl, credentials, httpOptions);
   }
  
   signUp(info: SignUpInfo): Observable<string> {

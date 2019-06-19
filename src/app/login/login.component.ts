@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
  
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
-import { AuthLoginInfo } from '../auth/login-info';
+import { LoginInput } from './login-input';
  
 @Component({
   selector: 'app-login',
@@ -15,36 +15,39 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  private loginInfo: AuthLoginInfo;
+  private loginInput: LoginInput;
  
   constructor(
     private authService: AuthService,
-    private tokenStorage: TokenStorageService
+    private tokenStorageService: TokenStorageService
   ) { }
  
-  ngOnInit() {
-    if (this.tokenStorage.getToken()) {
+  checkLogin(): void{
+    if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getAuthorities();
+      this.roles = this.tokenStorageService.getAuthorities();
     }
+  }
+
+  ngOnInit() {
+    this.checkLogin();
   }
  
   onSubmit() {
     console.log(this.form);
- 
-    this.loginInfo = new AuthLoginInfo(
+    this.loginInput = new LoginInput(
       this.form.username,
-      this.form.password);
- 
-    this.authService.attemptAuth(this.loginInfo).subscribe(
+      btoa(this.form.password));
+    
+    console.log(this.loginInput);
+    this.authService.attemptAuth(this.loginInput).subscribe(
       data => {
-        this.tokenStorage.saveToken(data.accessToken);
-        this.tokenStorage.saveUsername(data.username);
-        this.tokenStorage.saveAuthorities(data.authorities);
- 
+        this.tokenStorageService.saveToken(data.accessToken);
+        this.tokenStorageService.saveUsername(data.username);
+        this.tokenStorageService.saveAuthorities(data.authorities);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getAuthorities();
+        this.roles = this.tokenStorageService.getAuthorities();
         this.reloadPage();
       },
       error => {
@@ -53,8 +56,8 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = true;
       }
     );
-    console.log("token ",this.tokenStorage.getToken);
-    console.log("username ",this.tokenStorage.getUsername);
+    console.log("token ",this.tokenStorageService.getToken);
+    console.log("username ",this.tokenStorageService.getUsername);
   }
  
   reloadPage() {

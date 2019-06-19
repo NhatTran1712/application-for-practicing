@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log(this.form);
     this.loginInput = new LoginInput(
-      this.form.username,
+      btoa(this.form.username),
       btoa(this.form.password));
     
     console.log(this.loginInput);

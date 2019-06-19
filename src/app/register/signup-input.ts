@@ -1,5 +1,4 @@
-export class SignUpInfo{
-    // name: string;
+export class SignUpInput{
     username: string;
     password: string;
     role: string[];

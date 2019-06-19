@@ -8,6 +8,6 @@ export class LoginInput {
         this.id = null;
         this.username = username;
         this.password = password;
-        this.roles = null;
+        this.roles = [];
     }
 }

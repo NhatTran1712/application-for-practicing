@@ -46,7 +46,6 @@ export class TokenStorageService {
         this.roles.push(authority.authority);
       });
     }
- 
     return this.roles;
   }
 }

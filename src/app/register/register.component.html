@@ -1,5 +1,5 @@
 <div *ngIf="isSignedUp; else signupForm">
-  Your registration is successful. Please login!
+  User registered successfully. Please login!
 </div>
  
 <ng-template #signupForm>
@@ -20,6 +20,15 @@
         <div *ngIf="f.submitted && password.invalid">
           <div *ngIf="password.errors.required">Password is required</div>
           <div *ngIf="password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="confirmpassword">Confirm Password</label>
+        <input type="password" class="form-control" name="confirmpassword" [(ngModel)]="form.confirmpassword" #confirmpassword="ngModel"
+          required minlength="6" />
+        <div *ngIf="f.submitted && confirmpassword.invalid">
+          <div *ngIf="confirmpassword.errors.required">Password Confirm is required</div>
+          <div *ngIf="confirmpassword.errors.minlength">Password Confirm must be at least 6 characters</div>
         </div>
       </div>
       <div class="form-group">

@@ -27,7 +27,7 @@ export class AuthService {
     return this.http.post(this.loginUrl, credentials, httpOptions);
   }
  
-  signUp(info: SignUpInput): Observable<string> {
-    return this.http.post<string>(this.signupUrl, info, httpOptions);
+  signUp(signUpInput: SignUpInput): Observable<string> {
+    return this.http.post<string>(this.signupUrl, signUpInput, httpOptions);
   }
 }

@@ -1,7 +1,7 @@
 export class SignUpInput{
     username: string;
     password: string;
-    role: string[];
+    roles: string[];
 
     constructor(
         username: string,
@@ -9,6 +9,6 @@ export class SignUpInput{
     ){
         this.username = username;
         this.password = password;
-        this.role = ['ROLE_USER'];
+        this.roles = ['ROLE_USER'];
     }
 }

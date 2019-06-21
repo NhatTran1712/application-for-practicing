@@ -30,7 +30,8 @@ export class RegisterComponent implements OnInit {
       this.signupInput = new SignUpInput(
         btoa(this.form.username),
         btoa(this.form.password));
-
+      
+      console.log(this.signupInput);
       this.authService.signUp(this.signupInput).subscribe(
         data => {
           console.log(data);

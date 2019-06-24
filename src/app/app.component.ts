@@ -9,8 +9,10 @@ import { TokenStorageService } from './auth/token-storage.service';
 export class AppComponent implements OnInit {
   private roles: string[];
   private authority: string;
+  private username: string;
  
-  constructor(private tokenStorage: TokenStorageService) { }
+  constructor(
+    private tokenStorage: TokenStorageService) { }
 
   setAuthority(): void{
     if (this.tokenStorage.getToken()) {
@@ -30,7 +32,14 @@ export class AppComponent implements OnInit {
     }
   }
 
+  getUsername(): void{
+    if(this.tokenStorage.getToken()){
+      this.username = atob(this.tokenStorage.getUsername());
+    };
+  }
+
   ngOnInit() {
     this.setAuthority();
+    this.getUsername();
   }
 }

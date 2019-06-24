@@ -4,7 +4,7 @@
       <a class="navbar-brand" href="home">Practicing Application</a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav" routerLinkActive="active">
+      <ul class="nav navbar-nav navbar-left" routerLinkActive="active">
         <li class="nav-item"><a class="nav-link" routerLink="home">Home</a></li>
         <li *ngIf="authority === 'user'" class="nav-item">
           <a class="nav-link" routerLink="user">User Board</a>
@@ -12,11 +12,19 @@
         <li *ngIf="authority === 'admin'" class="nav-item">
           <a class="nav-link" routerLink="admin">Admin Board</a>
         </li>
-        <li *ngIf="authority === 'pm'" class="nav-item">
-          <a class="nav-link" routerLink="pm">PM Board</a>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" routerLinkActive="active">
+        <li *ngIf="!authority" class="nav-item">  
+          <a class="nav-link" routerLink="auth/login">Log In</a>
         </li>
-        <li *ngIf="!authority" class="nav-item">
-          <a class="nav-link" routerLink="auth/login">Login</a>
+        <li *ngIf="!authority" class="nav-item">  
+            <a class="nav-link" routerLink="signup">Register</a>
+          </li>
+        <li *ngIf="authority" class="nav-item">  
+          <a class="nav-link" routerLink="">{{username}}</a>
+        </li>
+        <li *ngIf="authority" class="nav-item">
+          <a class="nav-link" routerLink="logout">log out</a>
         </li>
       </ul>
     </div>

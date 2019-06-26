@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../services/user.service';
+import { UserService } from '../showuser/user.service';
  
 @Component({
   selector: 'app-pm',
@@ -12,14 +12,5 @@ export class PmComponent implements OnInit {
  
   constructor(private userService: UserService) { }
  
-  ngOnInit() {
-    this.userService.getPMBoard().subscribe(
-      data => {
-        this.board = data;
-      },
-      error => {
-        this.errorMessage = `${error.status}: ${JSON.parse(error.error).message}`;
-      }
-    );
-  }
+  ngOnInit() { }
 }

@@ -37,6 +37,7 @@ export class RegisterComponent implements OnInit {
           console.log(data);
           this.isSignedUp = true;
           this.isSignUpFailed = false;
+          this.reloadPage();
         },
         error => {
           console.log(error);
@@ -45,5 +46,9 @@ export class RegisterComponent implements OnInit {
         }
       );
     }
+  }
+
+  reloadPage(): void {
+    window.location.href = 'auth/login';
   }
 }

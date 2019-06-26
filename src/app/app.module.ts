@@ -14,6 +14,7 @@ import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { AdminComponent } from './admin/admin.component';
 import { PmComponent } from './pm/pm.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UsersComponent } from './users/users.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LogoutComponent } from './logout/logout.component';
     HomeComponent,
     AdminComponent,
     PmComponent,
-    LogoutComponent
+    LogoutComponent,
+    UsersComponent
   ],
   imports: [
     BrowserModule,

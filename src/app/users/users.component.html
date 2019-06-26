@@ -1,0 +1,26 @@
+<div *ngIf="!isAuthenticate; else showusers">
+  You don't login or don't have permission. Please log in or contact with your administration.
+</div>
+
+<ng-template #showusers>
+    <div class="col-md-6">
+        <h2> User Details</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Roles</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users | async">
+                    <td>{{userOutputs.id}}</td>
+                    <td>{{userOutputs.username}}</td>
+                    <td>{{userOutputs.roles}}</td>
+                    <!-- <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete User</button></td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>

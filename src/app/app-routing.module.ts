@@ -8,6 +8,7 @@ import { UserComponent } from './user/user.component';
 import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
+import { UsersComponent } from './users/users.component';
  
 const routes: Routes = [
     {
@@ -37,6 +38,14 @@ const routes: Routes = [
     {
         path: 'logout',
         component: LogoutComponent
+    },
+    {
+        path: 'user/:username',
+        component: UserComponent
+    },
+    {
+        path: 'users',
+        component: UsersComponent
     },
     {
         path: '',

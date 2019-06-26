@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
-  roles: string[] = [];
   private loginInput: LoginInput;
  
   constructor(
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit {
   checkLogin(): void{
     if (this.tokenStorageService.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorageService.getAuthorities();
     }
   }
 
@@ -47,17 +45,17 @@ export class LoginComponent implements OnInit {
         this.tokenStorageService.saveAuthorities(data.authorities);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorageService.getAuthorities();
         this.reloadPage();
       },
       error => {
         console.log(error);
-        this.errorMessage = error.error.message;
+        this.errorMessage = error.error;
         this.isLoginFailed = true;
       }
     );
-    console.log("token ",this.tokenStorageService.getToken);
-    console.log("username ",this.tokenStorageService.getUsername);
+    console.log("token ",this.tokenStorageService.getToken());
+    console.log("username ",this.tokenStorageService.getUsername());
+    console.log("roles ",this.tokenStorageService.getAuthorities());
   }
  
   reloadPage() {

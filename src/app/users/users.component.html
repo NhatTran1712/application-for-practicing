@@ -11,6 +11,7 @@
                     <th>ID</th>
                     <th>Username</th>
                     <th>Roles</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -18,7 +19,7 @@
                     <td>{{userOutput.id}}</td>
                     <td>{{userOutput.username}}</td>
                     <td>{{userOutput.roles}}</td>
-                    <!-- <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete User</button></td> -->
+                    <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button></td>
                 </tr>
             </tbody>
         </table>

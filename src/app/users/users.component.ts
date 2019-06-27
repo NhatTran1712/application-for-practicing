@@ -28,7 +28,7 @@ export class UsersComponent implements OnInit {
 
   loadUserOutputs(): void{
     if(this.isAuthenticate){
-      // this.showUserService.loadData();
+      this.showUserService.loadData();
       // this.userOutputs = this.showUserService.getUserOutput();
       this.userOutputs = this.userService.getUsers();
     }

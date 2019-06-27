@@ -4,7 +4,7 @@
 
 <ng-template #showusers>
     <div class="col-md-6">
-        <h2> User Details</h2>
+        <h3> User Details</h3>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -14,10 +14,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let user of users | async">
-                    <td>{{userOutputs.id}}</td>
-                    <td>{{userOutputs.username}}</td>
-                    <td>{{userOutputs.roles}}</td>
+                <tr *ngFor="let userOutput of userOutputs | async">
+                    <td>{{userOutput.id}}</td>
+                    <td>{{userOutput.username}}</td>
+                    <td>{{userOutput.roles}}</td>
                     <!-- <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete User</button></td> -->
                 </tr>
             </tbody>

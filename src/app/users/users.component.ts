@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { ShowUserService } from '../showuser/showuser.service';
 import { UserOutput } from '../user/user-output';
+import { Observable } from 'rxjs';
+import { UserService } from '../showuser/user.service';
+import { User } from '../user/user';
 
 @Component({
   selector: 'app-users',
@@ -9,10 +12,10 @@ import { UserOutput } from '../user/user-output';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  userOutputs: UserOutput[];
+  userOutputs: Observable<User[]>;
   isAuthenticate = false;
 
-  constructor(private showUserService: ShowUserService) { }
+  constructor(private showUserService: ShowUserService, private userService: UserService) { }
 
   checkAuthenticate(): void {
     if(this.showUserService.checkAuth('ROLE_ADMIN')){
@@ -25,9 +28,9 @@ export class UsersComponent implements OnInit {
 
   loadUserOutputs(): void{
     if(this.isAuthenticate){
-      this.showUserService.loadData();
-      this.showUserService.tranferToUserOutput();
-      this.userOutputs = this.showUserService.getUserOutput();
+      // this.showUserService.loadData();
+      // this.userOutputs = this.showUserService.getUserOutput();
+      this.userOutputs = this.userService.getUsers();
     }
   }
 

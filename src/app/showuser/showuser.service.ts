@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user/user';
 import { Observable } from 'rxjs';
 
+import { User } from '../user/user';
 import { UserService } from './user.service';
-import { TokenStorageService } from '../auth/token-storage.service';
+import { LoginService } from '../login/login.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,32 +13,21 @@ export class ShowUserService {
   
   constructor(
     private userService: UserService,
-    private token: TokenStorageService) { }
+    private loginService: LoginService) { }
 
   loadData(){
     this.users = this.userService.getUsers();
+    console.log(this.users);
   }
   
-  public checkAuth(roleInput: string): any {
-    let roles: Array<string>;
-    let isAuth = false;
+  public checkAuth(roleInput: string): boolean {
+    let authority: string;
 
-    if(this.token.getToken()){
-      roles = this.token.getAuthorities();
-      roles.forEach(role => {
-        if (role === roleInput) {
-          isAuth = true;
-        }
-        else{
-          isAuth = false;
-        }
-      });
-    }
-    else{
-      isAuth = false;
-    }
-    if(isAuth){
-      return true;
+    if(this.loginService.isLogin()){
+      authority = this.loginService.getAuthorities();
+      if (authority === roleInput) {
+        return true;
+      }
     }
     return false;
   }

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { LoginInput } from '../login/login-input';
-import { SignUpInput } from '../register/signup-input';
+import { SignUpInput } from '../register/register-input';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -18,10 +18,6 @@ export class AuthService {
  
   constructor(private http: HttpClient) {}
  
-  // attemptAuth(credentials: AuthLoginInfo): Observable<JwtResponse> {
-  //   return this.http.post<JwtResponse>(this.loginUrl, credentials, httpOptions);
-  // }
-
   attemptAuth(credentials: LoginInput): Observable<any> {
     console.log("credentials ", credentials);
     return this.http.post(this.loginUrl, credentials, httpOptions);

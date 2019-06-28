@@ -1,5 +1,8 @@
 <div *ngIf="!isAuthenticate; else showusers">
-  You don't login or don't have permission. Please log in or contact with your administration.
+    <h4>
+        You don't login or don't have permission.<br/>
+        Please login or contact with your administration.
+    </h4>
 </div>
 
 <ng-template #showusers>

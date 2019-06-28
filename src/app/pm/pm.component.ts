@@ -7,10 +7,8 @@ import { UserService } from '../showuser/user.service';
   styleUrls: ['./pm.component.css']
 })
 export class PmComponent implements OnInit {
-  board: string;
-  errorMessage: string;
- 
-  constructor(private userService: UserService) { }
+
+  constructor() { }
  
   ngOnInit() { }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TokenStorageService } from './auth/token-storage.service';
+
+import { LoginService } from './login/login.service';
  
 @Component({
   selector: 'app-root',
@@ -7,39 +8,17 @@ import { TokenStorageService } from './auth/token-storage.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private roles: string[];
-  private authority: string;
-  private username: string;
+  private authority: string = '';
+  private username: string = '';
+  private id: number = 0;
  
-  constructor(
-    private tokenStorage: TokenStorageService) { }
-
-  setAuthority(): void{
-    if (this.tokenStorage.getToken()) {
-      this.roles = this.tokenStorage.getAuthorities();
-      this.roles.every(role => {
-        if (role === 'ROLE_ADMIN') {
-          this.authority = 'admin';
-          return false;
-        }
-        else if (role === 'ROLE_PM') {
-          this.authority = 'pm';
-          return false;
-        }
-        this.authority = 'user';
-        return true;
-      });
-    }
-  }
-
-  getUsername(): void{
-    if(this.tokenStorage.getToken()){
-      this.username = atob(this.tokenStorage.getUsername());
-    };
-  }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit() {
-    this.setAuthority();
-    this.getUsername();
+    if(this.loginService.isLogin()){
+      this.authority = this.loginService.getAuthorities();
+      this.id = this.loginService.getId();
+      this.username = atob(this.loginService.getUsername());
+    }
   }
 }

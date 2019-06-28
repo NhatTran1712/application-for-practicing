@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { TokenStorageService } from '../auth/token-storage.service';
 import { LoginInput } from './login-input';
+import { LoginService } from './login.service';
  
 @Component({
   selector: 'app-login',
@@ -18,11 +19,12 @@ export class LoginComponent implements OnInit {
  
   constructor(
     private authService: AuthService,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
+    private loginService: LoginService
   ) { }
  
   checkLogin(): void{
-    if (this.tokenStorageService.getToken()) {
+    if (this.loginService.isLogin()) {
       this.isLoggedIn = true;
     }
   }
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.authService.attemptAuth(this.loginInput).subscribe(
       data => {
         this.tokenStorageService.saveToken(data.accessToken);
+        this.tokenStorageService.saveID(data.id);
         this.tokenStorageService.saveUsername(data.username);
         this.tokenStorageService.saveAuthorities(data.authorities);
         this.isLoginFailed = false;

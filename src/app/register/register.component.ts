@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
  
 import { AuthService } from '../auth/auth.service';
-import { SignUpInput } from './signup-input';
+import { SignUpInput } from './register-input';
  
 @Component({
   selector: 'app-register',
@@ -46,6 +46,10 @@ export class RegisterComponent implements OnInit {
         }
       );
     }
+  }
+
+  cancel(){
+    window.location.href = '/home';
   }
 
   reloadPage(): void {

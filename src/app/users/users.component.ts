@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { ShowUserService } from '../showuser/showuser.service';
 import { User } from '../user/user';
+import { UserService } from '../showuser/user.service';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +14,9 @@ export class UsersComponent implements OnInit {
   userOutputs: Observable<User[]>;
   isAuthenticate = false;
 
-  constructor(private showUserService: ShowUserService) { }
+  constructor(
+    private showUserService: ShowUserService,
+    private userService: UserService) { }
 
   checkAuthenticate(): void {
     if(this.showUserService.checkAuth('admin')){
@@ -23,8 +26,7 @@ export class UsersComponent implements OnInit {
 
   loadUserOutputs(): void{
     if(this.isAuthenticate){
-      this.showUserService.loadData();
-      this.userOutputs = this.showUserService.getUsers();
+      this.userOutputs = this.userService.getUsers();
       console.log(this.userOutputs);
     }
   }

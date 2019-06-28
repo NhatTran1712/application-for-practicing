@@ -1,8 +1,19 @@
-<div class="card">
-  <h5 class="card-header">Your Information</h5>
-  <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-  </div>
+<div *ngIf="!isAuthenticate; else showuser">
+  <h4>
+      You don't login or don't have permission.<br/>
+      Please login or contact with your administration.
+  </h4>
 </div>
+
+<ng-template #showuser>
+  <div class="card">
+    <h5 class="card-header">Your Information</h5>
+    <div class="card-body">
+      <h5 class="card-title">Username</h5>
+      <p class="card-text">{{userOutput.username}}</p>
+      <h5 class="card-title">Roles</h5>
+      <p class="card-text">{{userOutput.roles}}</p>
+      <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+    </div>
+  </div>
+</ng-template>

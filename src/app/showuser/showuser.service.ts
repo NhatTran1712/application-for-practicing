@@ -9,17 +9,9 @@ import { LoginService } from '../login/login.service';
   providedIn: 'root'
 })
 export class ShowUserService {
-  users: Observable<User[]>;
   
-  constructor(
-    private userService: UserService,
-    private loginService: LoginService) { }
+  constructor(private loginService: LoginService) { }
 
-  loadData(){
-    this.users = this.userService.getUsers();
-    console.log(this.users);
-  }
-  
   public checkAuth(roleInput: string): boolean {
     let authority: string;
 
@@ -30,9 +22,5 @@ export class ShowUserService {
       }
     }
     return false;
-  }
-  
-  getUsers(): Observable<User[]>{
-    return this.users;
   }
 }

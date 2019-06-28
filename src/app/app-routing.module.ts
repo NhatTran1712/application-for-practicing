@@ -40,7 +40,7 @@ const routes: Routes = [
         component: LogoutComponent
     },
     {
-        path: 'user/:username',
+        path: 'user/:user_id',
         component: UserComponent
     },
     {

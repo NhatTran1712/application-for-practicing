@@ -26,6 +26,7 @@ import { UsersComponent } from './users/users.component';
     AdminComponent,
     PmComponent,
     LogoutComponent,
+    UserComponent,
     UsersComponent
   ],
   imports: [

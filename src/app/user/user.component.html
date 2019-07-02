@@ -6,14 +6,23 @@
 </div>
 
 <ng-template #showuser>
-  <div class="card">
+  <div class="card" *ngIf="!isLoadingFailed">
     <h5 class="card-header">Your Information</h5>
-    <div class="card-body">
-      <h5 class="card-title">Username</h5>
-      <p class="card-text">{{userOutput.username}}</p>
-      <h5 class="card-title">Roles</h5>
-      <p class="card-text">{{userOutput.roles}}</p>
+    <div class="card-body" *ngFor="let item of userOutput| keyvalue">
+      <div *ngIf="authority === 'admin'">
+        <h5 class="card-title" *ngIf="item.key !== 'password'">{{item.key}}: {{item.value}}</h5>
+        <!-- <h5 class="card-title">{{item.key}}</h5>
+        <p class="card-text">{{item.value}}</p> -->
+      </div>
+      <div *ngIf="authority === 'user'">
+        <h5 class="card-title" *ngIf="(item.key !== 'password') && (item.key !== 'id')">{{item.key}}: {{item.value}}</h5>
+        <!-- <h5 class="card-title">{{item.key}}</h5>
+        <p class="card-text">{{item.value}}</p> -->
+      </div>
       <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
     </div>
+  </div>
+  <div *ngIf="isLoadingFailed">
+    <p>Loading failed: {{errorMessage}}</p>
   </div>
 </ng-template>

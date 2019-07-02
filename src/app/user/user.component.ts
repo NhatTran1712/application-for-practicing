@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../showuser/user.service';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { User } from './user';
+
+import { UserService } from '../showuser/user.service';
 import { ShowUserService } from '../showuser/showuser.service';
-import { TokenStorageService } from '../auth/token-storage.service';
+import { LoginService } from '../login/login.service';
  
 @Component({
   selector: 'app-user',
@@ -13,42 +12,69 @@ import { TokenStorageService } from '../auth/token-storage.service';
 })
 export class UserComponent implements OnInit {
   user_id: number;
-  userOutput: User;
+  userOutput: any;
   isAuthenticate = false;
-  
+  authority: string;
+  errorMessage: string = '';
+  isLoadingFailed = false;
+
   constructor(
     private route: ActivatedRoute,
     private userService: UserService,
     private showUserService: ShowUserService,
-    private token : TokenStorageService) { }
+    private loginService : LoginService) { }
   
+  getUserId(): void {
+    this.route.params.subscribe(event => {
+      this.user_id = event.user_id;
+      console.log(this.user_id);
+    });
+  }
+
   loadUserOutput(): void{
     if(this.isAuthenticate){
-      this.route.params.subscribe(event => {
-        this.user_id = event.user_id;
-      });
-      console.log(this.user_id);
       this.userService.getUser(this.user_id).subscribe(
         data => {
-          this.userOutput = data;
-        });
-      console.log(this.userOutput);
+          if(data!=null){
+            console.log(data);
+            this.userOutput = data;
+            this.userOutput.username = atob(this.userOutput.username);
+            console.log(this.userOutput.username);
+            console.log(this.userOutput);
+          }
+          else{
+            this.errorMessage = 'Account did not exited';
+            this.isLoadingFailed = true;
+            console.log(this.errorMessage);
+          }
+        },
+      );
     }
+  }
+
+  getAuthority(): void {
+    this.authority = this.loginService.getAuthorities();
   }
 
   checkAuth(): void{
     if(this.showUserService.checkAuth('user')){
-      if(this.user_id === this.token.getID()){
+      // console.log('user');
+      // console.log(this.user_id);
+      // console.log(this.loginService.getId());
+      if(this.user_id == this.loginService.getId()){
         this.isAuthenticate = true;
       }
     }
     else if(this.showUserService.checkAuth('admin')){
       this.isAuthenticate = true;
     }
+    console.log(this.isAuthenticate);
   }
 
   ngOnInit() {
+    this.getUserId();
     this.checkAuth();
     this.loadUserOutput();
+    this.getAuthority();
   }
 }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { ShowUserService } from '../showuser/showuser.service';
 import { User } from '../user/user';
 import { UserService } from '../showuser/user.service';
+import { LoginService } from '../login/login.service';
 
 @Component({
   selector: 'app-users',
@@ -15,13 +15,14 @@ export class UsersComponent implements OnInit {
   isAuthenticate = false;
 
   constructor(
-    private showUserService: ShowUserService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private loginService: LoginService) { }
 
   checkAuthenticate(): void {
-    if(this.showUserService.checkAuth('admin')){
+    if(this.loginService.isLogin() && (this.loginService.getAuthorities() === 'admin')){
       this.isAuthenticate = true;
     }
+    
   }
 
   loadUserOutputs(): void{

@@ -9,6 +9,7 @@ import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UsersComponent } from './users/users.component';
+import { DeviceIpConfigComponent } from './deviceIpConfig/deviceIpConfig.component';
  
 const routes: Routes = [
     {
@@ -46,6 +47,10 @@ const routes: Routes = [
     {
         path: 'users',
         component: UsersComponent
+    },
+    {
+        path: 'devices/ipconfig',
+        component: DeviceIpConfigComponent
     },
     {
         path: '',

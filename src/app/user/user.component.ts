@@ -39,6 +39,7 @@ export class UserComponent implements OnInit {
             if((this.authority === 'user') || (this.userIdInput == this.loginService.getId())){
               this.userOutput.username = atob(this.userOutput.username);
             }
+            this.isLoadingFailed = false;
             console.log(this.userOutput.username);
             console.log(this.userOutput);
           }

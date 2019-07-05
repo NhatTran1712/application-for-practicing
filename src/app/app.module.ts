@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-// import { AdminComponent } from './admin/admin.component';
 import { httpInterceptorProviders } from './auth/auth-interceptor';
 import { AdminComponent } from './admin/admin.component';
 import { PmComponent } from './pm/pm.component';
@@ -17,6 +16,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { UsersComponent } from './users/users.component';
 import { DeviceIpConfigComponent } from './deviceIpConfig/deviceIpConfig.component';
 import { DeviceInforComponent } from './deviceInfor/deviceInfor.component';
+import { ImportDeviceIpComponent } from './importDeviceIp/importDeviceIp.component';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { DeviceInforComponent } from './deviceInfor/deviceInfor.component';
     UserComponent,
     UsersComponent,
     DeviceIpConfigComponent,
-    DeviceInforComponent
+    DeviceInforComponent,
+    ImportDeviceIpComponent,
+    CustomerComponent,
   ],
   imports: [
     BrowserModule,

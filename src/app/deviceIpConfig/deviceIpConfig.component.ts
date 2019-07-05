@@ -10,7 +10,6 @@ import { DeviceService } from '../showdevice/device.service';
 export class DeviceIpConfigComponent implements OnInit {
   deviceIpConfigOutput: any;
   isLoadingFailed = false;
-  isLogin = false;
   errorMessage = '';
 
   constructor(
@@ -19,7 +18,6 @@ export class DeviceIpConfigComponent implements OnInit {
   ) {}
 
   loadDeviceIpConfigOutput(): void{
-    if(this.loginService.isLogin()){
       this.deviceService.getDeviceIp().subscribe(
         data => {
           console.log(data);
@@ -32,8 +30,6 @@ export class DeviceIpConfigComponent implements OnInit {
           console.log(this.errorMessage);
         }
       );
-      this.isLogin = true;
-    }
   }
 
   ngOnInit() {

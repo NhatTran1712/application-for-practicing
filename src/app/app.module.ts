@@ -14,10 +14,11 @@ import { AdminComponent } from './admin/admin.component';
 import { PmComponent } from './pm/pm.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UsersComponent } from './users/users.component';
-import { DeviceIpConfigComponent } from './deviceIpConfig/deviceIpConfig.component';
-import { DeviceInforComponent } from './deviceInfor/deviceInfor.component';
-import { ImportDeviceIpComponent } from './importDeviceIp/importDeviceIp.component';
+import { DeviceIpConfigComponent } from './deviceipconfig/deviceIpConfig.component';
+import { DeviceInforComponent } from './deviceinfor/deviceInfor.component';
+import { ImportDeviceIpComponent } from './importdeviceip/importDeviceIp.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ImportDeviceInforComponent } from './importdeviceinfor/importDeviceInfor.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { CustomerComponent } from './customer/customer.component';
     DeviceInforComponent,
     ImportDeviceIpComponent,
     CustomerComponent,
+    ImportDeviceInforComponent,
   ],
   imports: [
     BrowserModule,

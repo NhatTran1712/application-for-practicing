@@ -5,12 +5,12 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-import { PmComponent } from './pm/pm.component';
 import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UsersComponent } from './users/users.component';
-import { ImportDeviceIpComponent } from './importDeviceIp/importDeviceIp.component';
+import { ImportDeviceIpComponent } from './importdeviceip/importDeviceIp.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ImportDeviceInforComponent } from './importdeviceinfor/importDeviceInfor.component';
  
 const routes: Routes = [
     {
@@ -52,6 +52,10 @@ const routes: Routes = [
     {
         path: 'devices/import/ipconfig',
         component: ImportDeviceIpComponent
+    },
+    {
+        path: 'devices/import/infor',
+        component: ImportDeviceInforComponent
     },
     {
         path: '',

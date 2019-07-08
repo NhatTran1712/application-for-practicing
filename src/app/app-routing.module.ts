@@ -8,9 +8,11 @@ import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { LogoutComponent } from './logout/logout.component';
 import { UsersComponent } from './users/users.component';
-import { ImportDeviceIpComponent } from './importdeviceip/importDeviceIp.component';
+import { ImportDeviceIpConfigComponent } from './importdeviceipconfig/importDeviceIpConfig.component';
 import { CustomerComponent } from './customer/customer.component';
-import { ImportDeviceInforComponent } from './importdeviceinfor/importDeviceInfor.component';
+import { ImportDeviceIpInforComponent } from './importdeviceipinfor/importDeviceIpInfor.component';
+import { DeviceIpConfigComponent } from './deviceipconfig/deviceIpConfig.component';
+import { DeviceIpInforComponent } from './deviceipinfor/deviceIpInfor.component';
  
 const routes: Routes = [
     {
@@ -50,12 +52,20 @@ const routes: Routes = [
         component: UsersComponent
     },
     {
-        path: 'devices/import/ipconfig',
-        component: ImportDeviceIpComponent
+        path: 'devices/ipconfig',
+        component: DeviceIpConfigComponent
     },
     {
-        path: 'devices/import/infor',
-        component: ImportDeviceInforComponent
+        path: 'devices/ipinfor',
+        component: DeviceIpInforComponent
+    },
+    {
+        path: 'devices/import/ipconfig',
+        component: ImportDeviceIpConfigComponent
+    },
+    {
+        path: 'devices/import/ipinfor',
+        component: ImportDeviceIpInforComponent
     },
     {
         path: '',

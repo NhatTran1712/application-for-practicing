@@ -14,25 +14,25 @@ export class DeviceService {
 
   constructor(private http: HttpClient) { }
 
-  getDeviceIp(): Observable<any>{
+  getDeviceIpConfig(): Observable<any>{
     return this.http.get(`${this.baseUrl}/ipconfig`, httpOptions);
   }
 
-  getDeviceInfor(): Observable<any>{
+  getDeviceIpInfor(): Observable<any>{
     return this.http.get(`${this.baseUrl}/information`, httpOptions);
   }
 
-  getWritedDeviceIp(ip: string): Observable<any>{
+  getWritedDeviceIpConfig(ip: string): Observable<any>{
     return this.http.get(`${this.baseUrl}/${ip}/ipconfig`, httpOptions);
   }
 
-  getWritedDeviceInfor(ip: string): Observable<any>{
+  getWritedDeviceIpInfor(ip: string): Observable<any>{
     return this.http.get(`${this.baseUrl}/${ip}/information`, httpOptions);
   }
 
   // CHECK IP WITH RANGE_EX
 
-  getIpDevices(): any{
+  getDeviceIpsInfor(): Observable<any>{
     return this.http.get(`${this.baseUrl}/ips`, httpOptions);
   }
 }

@@ -1,5 +1,5 @@
 	
-export class DeviceInfor {
+export class DeviceIpInfor {
     current_version: string;
     emsfp_version: string;
     asic_version: string;

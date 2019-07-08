@@ -4,11 +4,11 @@ import { LoginService } from '../login/login.service';
 import { DeviceService } from '../showdevice/device.service';
 
 @Component({
-  selector: 'app-importDeviceIp',
-  templateUrl: './importDeviceIp.component.html',
-  styleUrls: ['./importDeviceIp.component.css']
+  selector: 'app-importDeviceIpConfig',
+  templateUrl: './importDeviceIpConfig.component.html',
+  styleUrls: ['./importDeviceIpConfig.component.css']
 })
-export class ImportDeviceIpComponent implements OnInit {
+export class ImportDeviceIpConfigComponent implements OnInit {
   form: any = {};
   isLogin = false;
   isValid = false;
@@ -28,7 +28,7 @@ export class ImportDeviceIpComponent implements OnInit {
     this.isValid =
       /^([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})[.]([0-9]{1,3})$/.test(this.form.ip);
     if(this.isValid){
-      this.deviceService.getWritedDeviceIp(this.form.ip).subscribe(
+      this.deviceService.getWritedDeviceIpConfig(this.form.ip).subscribe(
         data => {
           console.log(data);
           this.deviceIpOutput = data;

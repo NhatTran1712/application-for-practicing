@@ -3,12 +3,12 @@ import { LoginService } from '../login/login.service';
 import { DeviceService } from '../showdevice/device.service';
 
 @Component({
-  selector: 'app-deviceIpConfig',
-  templateUrl: './deviceIpConfig.component.html',
-  styleUrls: ['./deviceIpConfig.component.css']
+  selector: 'app-deviceIpInfor',
+  templateUrl: './deviceIpInfor.component.html',
+  styleUrls: ['./deviceIpInfor.component.css']
 })
-export class DeviceIpConfigComponent implements OnInit {
-  deviceIpConfigOutput: any;
+export class DeviceIpInforComponent implements OnInit {
+  deviceIpInforOutput: any;
   isLoadingFailed = false;
   isLogin = false;
   errorMessage: string = '';
@@ -16,16 +16,16 @@ export class DeviceIpConfigComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private deviceService: DeviceService
-  ) {}
-
-  loadDeviceIpConfigOutput(): void{
+  ) { }
+  
+  loadDeviceIpInforOutput(): void{
     if(this.isLogin){
-      this.deviceService.getDeviceIpConfig().subscribe(
+      this.deviceService.getDeviceIpInfor().subscribe(
         data => {
           console.log(data);
-          this.deviceIpConfigOutput = data;
+          this.deviceIpInforOutput = data;
           this.isLoadingFailed = false;
-          console.log(this.deviceIpConfigOutput);
+          console.log(this.deviceIpInforOutput);
         },
         error => {
           this.errorMessage = error.error;
@@ -38,6 +38,6 @@ export class DeviceIpConfigComponent implements OnInit {
 
   ngOnInit() {
     this.isLogin = this.loginService.isLogin();
-    this.loadDeviceIpConfigOutput();
+    this.loadDeviceIpInforOutput();
   }
 }

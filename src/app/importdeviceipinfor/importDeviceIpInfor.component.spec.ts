@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ImportDeviceInforComponent } from './importDeviceInfor.component';
+import { ImportDeviceIpInforComponent } from './importDeviceIpInfor.component';
 
 describe('ImportDeviceInforComponent', () => {
-  let component: ImportDeviceInforComponent;
-  let fixture: ComponentFixture<ImportDeviceInforComponent>;
+  let component: ImportDeviceIpInforComponent;
+  let fixture: ComponentFixture<ImportDeviceIpInforComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ImportDeviceInforComponent ]
+      declarations: [ ImportDeviceIpInforComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ImportDeviceInforComponent);
+    fixture = TestBed.createComponent(ImportDeviceIpInforComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

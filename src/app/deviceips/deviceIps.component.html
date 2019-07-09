@@ -1,0 +1,66 @@
+<h3>Find Devices</h3>
+
+<div *ngIf="!isLogin; else showdevices">
+  <h4>Please login.</h4>
+</div>
+
+<ng-template #showdevices>
+  <form class="form-inline" name="form" (ngSubmit)="onSubmit()" #f="ngForm"
+    novalidate>
+    <div class="form-group">
+      <label for="rangeIp">Enter Range IP</label>
+      <div class="d-inline">
+        <input type="text" class="form-control" name="rangeIp" [(ngModel)]="form.rangeIp"
+          #rangeIp="ngModel" placeholder="0.0.0.0-2" required />
+          <button type="submit" class="btn btn-primary">Confirm</button>
+      </div>
+      <small class="text-muted">Use symbol "-" to define the range.</small>
+      <div *ngIf="f.submitted && rangeIp.invalid">
+        <div *ngIf="rangeIp.errors.required">IP is required</div>
+      </div>
+      <div *ngIf="f.submitted && !isValid" class="alert alert-danger">
+        IP not Valid
+      </div>
+    </div>
+    <hr/>
+    <div *ngIf="f.submitted && !isLoadingFailed">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Current Version</th>
+            <th>Emsfp Version</th>
+            <th>Asic Version</th>
+            <th>Hw Version</th>
+            <th>Sw Sha1</th>
+            <th>Type</th>
+            <th>Asic Slot 00</th>
+            <th>Asic Slot 01</th>
+            <th>Asic Slot 02</th>
+            <th>Asic Slot 03</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let deviceIpInfor of deviceIpsInfor">
+            <td>{{deviceIpInfor.current_version}}</td>
+            <td>{{deviceIpInfor.emsfp_version}}</td>
+            <td>{{deviceIpInfor.asic_version}}</td>
+            <td>{{deviceIpInfor.hw_version}}</td>
+            <td>{{deviceIpInfor.sw_sha1}}</td>
+            <td>{{deviceIpInfor.type}}</td>
+            <td>{{deviceIpInfor.asic_slot_00}}</td>
+            <td>{{deviceIpInfor.asic_slot_01}}</td>
+            <td>{{deviceIpInfor.asic_slot_02}}</td>
+            <td>{{deviceIpInfor.asic_slot_03}}</td>
+            <!-- <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button></td> -->
+          </tr>
+        </tbody>
+      </table>
+      <!-- <div *ngFor="let item of deviceIpOutput| keyvalue">
+        <h5>{{item.key}}: {{item.value}}</h5>
+      </div> -->
+    </div>
+    <div *ngIf="f.submitted && isLoadingFailed">
+      Loading: {{errorMessage}}
+    </div>
+  </form>
+</ng-template>

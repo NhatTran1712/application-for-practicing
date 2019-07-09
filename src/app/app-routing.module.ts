@@ -13,6 +13,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { ImportDeviceIpInforComponent } from './importdeviceipinfor/importDeviceIpInfor.component';
 import { DeviceIpConfigComponent } from './deviceipconfig/deviceIpConfig.component';
 import { DeviceIpInforComponent } from './deviceipinfor/deviceIpInfor.component';
+import { DeviceIpsComponent } from './deviceips/deviceIps.component';
  
 const routes: Routes = [
     {
@@ -66,6 +67,10 @@ const routes: Routes = [
     {
         path: 'devices/import/ipinfor',
         component: ImportDeviceIpInforComponent
+    },
+    {
+        path: 'devices/ips',
+        component: DeviceIpsComponent
     },
     {
         path: '',

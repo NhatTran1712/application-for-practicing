@@ -34,4 +34,8 @@ export class DeviceService {
   getDeviceIpsInfor(rangeIp: string): Observable<any>{
     return this.http.get(`${this.baseUrl}/check-ip/${rangeIp}`, httpOptions);
   }
+
+  getIps(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/ips`, httpOptions);
+  }
 }

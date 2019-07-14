@@ -20,6 +20,7 @@ import { ImportDeviceIpConfigComponent } from './importdeviceipconfig/importDevi
 import { CustomerComponent } from './customer/customer.component';
 import { ImportDeviceIpInforComponent } from './importdeviceipinfor/importDeviceIpInfor.component';
 import { DeviceIpsComponent } from './deviceips/deviceIps.component';
+import { IpsComponent } from './ips/ips.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { DeviceIpsComponent } from './deviceips/deviceIps.component';
     CustomerComponent,
     ImportDeviceIpInforComponent,
     DeviceIpsComponent,
+    IpsComponent,
   ],
   imports: [
     BrowserModule,

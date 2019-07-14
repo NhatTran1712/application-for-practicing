@@ -1,0 +1,15 @@
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>IP</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ip of ips">
+      <td>{{ip.Id}}</td>
+      <td>{{ip.Ip}}</td>
+      <!-- <td><button class="btn btn-danger" (click)="deleteUser(user)"> Delete</button></td> -->
+    </tr>
+  </tbody>
+</table>
